@@ -580,12 +580,19 @@
         .success-message {
             background-color: #d4edda;
             color: #155724;
-            padding: 15px;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 10px;
             margin-bottom: 20px;
             display: none;
             text-align: center;
             font-size: 1.1rem;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .success-message h3 {
+            color: #155724;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
         
         /* Responsive Design */
@@ -1064,10 +1071,11 @@
                 <p>Merci pour votre commande ! Nous avons bien reçu vos informations et vous contacterons sous peu pour confirmer votre commande.</p>
             </div>
             
-            <form id="orderForm" class="order-form" action="https://formsubmit.co/anakinstark777@gmail.com" method="POST">
+            <form id="orderForm" class="order-form" action="https://formsubmit.co/anakinstark777@gmail.com" method="POST" target="_blank">
                 <input type="hidden" name="_subject" value="Nouvelle Commande de ShopEasy">
                 <input type="hidden" name="_template" value="basic">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://anakinstark7.github.io/#order">
                 
                 <div class="form-group">
                     <label for="customerName">Nom Complet *</label>
@@ -1086,7 +1094,7 @@
                 
                 <div class="form-group">
                     <label for="customerCity">Livraison à *</label>
-                    <select id="customerCity" name="Ville et Livraison" required>
+                    <select id="customerCity" name="Ville_et_Livraison" required>
                         <option value="">-- Choisissez votre ville et type de livraison --</option>
                         <!-- Les options seront générées dynamiquement par JavaScript -->
                     </select>
@@ -1986,17 +1994,52 @@
                 orderForm.appendChild(totalField);
                 
                 // Show success message immediately
-                e.preventDefault();
                 successMessage.style.display = 'block';
                 orderForm.style.display = 'none';
                 
                 // Scroll to success message
                 successMessage.scrollIntoView({ behavior: 'smooth' });
                 
-                // Submit the form after a short delay
+                // Reset form after submission
                 setTimeout(() => {
-                    orderForm.submit();
-                }, 2000);
+                    // Reset all quantities to 0
+                    const quantityDisplays = document.querySelectorAll('.quantity-display');
+                    quantityDisplays.forEach(display => {
+                        display.textContent = '0';
+                    });
+                    
+                    // Reset all hidden inputs
+                    const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
+                    hiddenInputs.forEach(input => {
+                        if (input.name.startsWith('product_')) {
+                            input.value = '0';
+                        }
+                    });
+                    
+                    // Reset size selects
+                    const sizeSelects = document.querySelectorAll('.size-selector select');
+                    sizeSelects.forEach(select => {
+                        select.value = '';
+                        select.style.borderColor = '';
+                    });
+                    
+                    // Remove selected class
+                    const productCards = document.querySelectorAll('.slider-product');
+                    productCards.forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    
+                    // Reset order summary
+                    updateOrderSummary();
+                    
+                    // Reset form to initial state after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                        orderForm.style.display = 'block';
+                        orderForm.reset();
+                    }, 5000);
+                    
+                }, 1000);
             });
             
             // Function to update order summary
@@ -2065,3 +2108,4 @@
     </script>
 </body>
 </html>
+
