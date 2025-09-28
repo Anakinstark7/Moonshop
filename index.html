@@ -584,6 +584,8 @@
             border-radius: 5px;
             margin-bottom: 20px;
             display: none;
+            text-align: center;
+            font-size: 1.1rem;
         }
         
         /* Responsive Design */
@@ -1058,13 +1060,13 @@
             <h2 class="section-title">Passer Votre Commande</h2>
             
             <div class="success-message" id="successMessage">
-                Merci pour votre commande ! Nous avons reçu vos informations et vous contacterons sous peu.
+                <h3>✅ Commande Confirmée !</h3>
+                <p>Merci pour votre commande ! Nous avons bien reçu vos informations et vous contacterons sous peu pour confirmer votre commande.</p>
             </div>
             
             <form id="orderForm" class="order-form" action="https://formsubmit.co/anakinstark777@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Nouvelle Commande de ShopEasy">
                 <input type="hidden" name="_template" value="basic">
-                <input type="hidden" name="_next" value="https://anakinstark7.github.io/success.html">
                 <input type="hidden" name="_captcha" value="false">
                 
                 <div class="form-group">
@@ -1966,18 +1968,12 @@
                 
                 totalAmount += deliveryFee;
                 
-                // Create hidden fields for products data
+                // Create hidden fields for products data (only selected products)
                 productsData.forEach((product, index) => {
-                    // Remove any existing hidden fields first
-                    const existingField = document.querySelector(`[name="produit_${index + 1}"]`);
-                    if (existingField) {
-                        existingField.remove();
-                    }
-                    
-                    // Create new hidden field with formatted product info
+                    // Create hidden field with formatted product info
                     const hiddenField = document.createElement('input');
                     hiddenField.type = 'hidden';
-                    hiddenField.name = `Produit ${index + 1}`;
+                    hiddenField.name = `Produit_${index + 1}`;
                     hiddenField.value = `${product.name} - Taille: ${product.size} - Quantité: ${product.quantity} - Prix: ${new Intl.NumberFormat('fr-DZ').format(product.total)} DA`;
                     orderForm.appendChild(hiddenField);
                 });
@@ -1985,16 +1981,22 @@
                 // Add total and delivery info
                 const totalField = document.createElement('input');
                 totalField.type = 'hidden';
-                totalField.name = 'Total Commande';
+                totalField.name = 'Total_Commande';
                 totalField.value = `${new Intl.NumberFormat('fr-DZ').format(totalAmount)} DA (dont ${new Intl.NumberFormat('fr-DZ').format(deliveryFee)} DA de livraison)`;
                 orderForm.appendChild(totalField);
                 
                 // Show success message immediately
+                e.preventDefault();
                 successMessage.style.display = 'block';
                 orderForm.style.display = 'none';
                 
                 // Scroll to success message
                 successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Submit the form after a short delay
+                setTimeout(() => {
+                    orderForm.submit();
+                }, 2000);
             });
             
             // Function to update order summary
