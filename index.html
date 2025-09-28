@@ -1061,7 +1061,7 @@
                 Merci pour votre commande ! Nous avons reçu vos informations et vous contacterons sous peu.
             </div>
             
-            <form id="orderForm" class="order-form" action="https://formsubmit.co/anakinstark777@gmail.com" method="POST">
+            <form id="orderForm" class="order-form" action="https://formsubmit.co/aaaklnstark77@gmail.com" method="POST">
                 <!-- Configuration Formsubmit pour un email propre -->
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_subject" value="Nouvelle Commande - Moonshop">
@@ -1394,11 +1394,20 @@
                     <textarea id="orderNotes" name="📝 Notes" placeholder="Toute instruction spéciale pour votre commande..."></textarea>
                 </div>
                 
-                <!-- === CHAMPS CACHÉS POUR L'EMAIL PROPRE === -->
-                <input type="hidden" name="🛒 Détails de la commande" id="emailOrderDetails">
+                <!-- === CHAMPS CACHÉS POUR L'EMAIL PROPRE - RÉORGANISÉS === -->
+                <input type="hidden" name="👤 Nom" id="emailName">
+                <input type="hidden" name="📧 Email" id="emailEmail">
+                <input type="hidden" name="📞 Téléphone" id="emailPhone">
+                <input type="hidden" name="🏠 Ville et Livraison" id="emailCity">
+                <input type="hidden" name="📍 Adresse" id="emailAddress">
+                <input type="hidden" name="📝 Notes" id="emailNotes">
+                <input type="hidden" name="---" value=" ">
+                <input type="hidden" name="🛒 DÉTAILS DE LA COMMANDE" id="emailOrderDetails">
                 <input type="hidden" name="💰 Total des produits" id="emailProductsTotal">
                 <input type="hidden" name="🚚 Frais de livraison" id="emailDeliveryFee">
                 <input type="hidden" name="💵 Total général" id="emailTotalAmount">
+                <input type="hidden" name="---" value=" ">
+                <input type="hidden" name="📋 DÉTAILS TECHNIQUES" value="(Ces informations sont pour notre système)">
                 
                 <!-- Order Summary -->
                 <div class="order-summary" id="orderSummary">
@@ -1515,7 +1524,15 @@
             
             const totalAmount = productsTotal + deliveryFee;
             
-            // Mettre à jour les champs cachés pour l'email
+            // Mettre à jour les champs cachés pour l'email - INFORMATIONS PRINCIPALES EN PREMIER
+            document.getElementById('emailName').value = document.getElementById('customerName').value;
+            document.getElementById('emailEmail').value = document.getElementById('customerEmail').value;
+            document.getElementById('emailPhone').value = document.getElementById('customerPhone').value;
+            document.getElementById('emailCity').value = document.getElementById('customerCity').options[document.getElementById('customerCity').selectedIndex].text;
+            document.getElementById('emailAddress').value = document.getElementById('customerAddress').value;
+            document.getElementById('emailNotes').value = document.getElementById('orderNotes').value;
+            
+            // Détails de la commande
             document.getElementById('emailOrderDetails').value = orderDetails.join(' | ');
             document.getElementById('emailProductsTotal').value = `${productsTotal.toLocaleString()} DA`;
             document.getElementById('emailDeliveryFee').value = `${deliveryFee.toLocaleString()} DA`;
@@ -2085,5 +2102,3 @@
     </script>
 </body>
 </html>
-
-
