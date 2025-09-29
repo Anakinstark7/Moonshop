@@ -1064,6 +1064,7 @@
             <form id="orderForm" class="order-form" action="https://formsubmit.co/anakinstark777@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Nouvelle Commande de ShopEasy">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="total" id="formTotal" value="0">
                 
                 <div class="form-group">
                     <label for="customerName">Nom Complet *</label>
@@ -1096,7 +1097,7 @@
                             <!-- Slide 1 -->
                             <div class="slide">
                                 <!-- Product 1 -->
-                                <div class="slider-product" data-id="1" data-name="JJIEDDIE JJORIGINAL SO 737 NOOS JEAN" data-price="3500">
+                                <div class="slider-product" data-id="1" data-name="votre produit 1" data-price="3500">
                                     <img src="images/prod1.png" alt="JJIEDDIE JEAN" class="product-image">
                                     <h4>votre produit 1</h4>
                                     <p>3 500 DA</p>
@@ -1106,7 +1107,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_1">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="S">S (Petit)</option>
                                             <option value="M">M (Moyen)</option>
@@ -1114,11 +1115,11 @@
                                             <option value="XL">XL (Très Large)</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_1" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 2 -->
-                                <div class="slider-product" data-id="2" data-name="Montre Connectée Premium" data-price="12000">
+                                <div class="slider-product" data-id="2" data-name="votre produit 2" data-price="12000">
                                     <img src="images/prod2.png" alt="Montre Connectée">
                                     <h4>votre produit 2</h4>
                                     <p>12 000 DA</p>
@@ -1128,7 +1129,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_2">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="38mm">38mm (Petit poignet)</option>
                                             <option value="42mm">42mm (Moyen poignet)</option>
@@ -1136,11 +1137,11 @@
                                             <option value="Ajustable">Ajustable</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_2" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 3 -->
-                                <div class="slider-product" data-id="3" data-name="Enceinte Bluetooth" data-price="2000">
+                                <div class="slider-product" data-id="3" data-name="votre produit 3" data-price="2000">
                                     <img src="images/prod3.png" alt="Enceinte Bluetooth">
                                     <h4>votre produit 3</h4>
                                     <p>2 000 DA</p>
@@ -1150,21 +1151,21 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_3">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="Petite">Petite (Portable)</option>
                                             <option value="Moyenne">Moyenne (Maison)</option>
                                             <option value="Grande">Grande (Extérieur)</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_3" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                             </div>
                             
                             <!-- Slide 2 -->
                             <div class="slide">
                                 <!-- Product 4 -->
-                                <div class="slider-product" data-id="4" data-name="Écouteurs Sans Fil" data-price="9500">
+                                <div class="slider-product" data-id="4" data-name="votre produit 4" data-price="9500">
                                     <img src="images/prod4.png" alt="Écouteurs Sans Fil">
                                     <h4>votre produit 4</h4>
                                     <p>9 500 DA</p>
@@ -1174,7 +1175,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_4">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="Petite">Petite (Petites oreilles)</option>
                                             <option value="Moyenne">Moyenne (Oreilles standard)</option>
@@ -1182,11 +1183,11 @@
                                             <option value="Ajustable">Embouts ajustables</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_4" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 5 -->
-                                <div class="slider-product" data-id="5" data-name="Sac à Dos pour Ordinateur" data-price="1500">
+                                <div class="slider-product" data-id="5" data-name="votre produit 5" data-price="1500">
                                     <img src="images/prod5.png" alt="Sac à Dos pour Ordinateur">
                                     <h4>votre produit 5</h4>
                                     <p>1 500 DA</p>
@@ -1196,7 +1197,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_5">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="13-14">13-14 pouces</option>
                                             <option value="15-16">15-16 pouces</option>
@@ -1204,11 +1205,11 @@
                                             <option value="Universal">Universel</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_5" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 6 -->
-                                <div class="slider-product" data-id="6" data-name="Chaussures de Course" data-price="8000">
+                                <div class="slider-product" data-id="6" data-name="votre produit 6" data-price="8000">
                                     <img src="images/prod6.png" alt="Chaussures de Course">
                                     <h4>votre produit 6</h4>
                                     <p>8 000 DA</p>
@@ -1218,7 +1219,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_6">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="38">38</option>
                                             <option value="39">39</option>
@@ -1230,13 +1231,13 @@
                                             <option value="45">45</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_6" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                             </div>
                             <!-- Slide 3 -->
                             <div class="slide">
                                 <!-- Product 7 -->
-                                <div class="slider-product" data-id="7" data-name="JJIEDDIE JJORIGINAL SO 737 NOOS JEAN" data-price="600">
+                                <div class="slider-product" data-id="7" data-name="votre produit 7" data-price="600">
                                     <img src="images/prod7.png" alt="JJIEDDIE JEAN" class="product-image">
                                     <h4>votre produit 7</h4>
                                     <p>600 DA</p>
@@ -1246,7 +1247,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_1">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="S">S (Petit)</option>
                                             <option value="M">M (Moyen)</option>
@@ -1254,11 +1255,11 @@
                                             <option value="XL">XL (Très Large)</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_7" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 8 -->
-                                <div class="slider-product" data-id="8" data-name="Montre Connectée Premium" data-price="1500">
+                                <div class="slider-product" data-id="8" data-name="votre produit 8" data-price="1500">
                                     <img src="images/prod8.png" alt="Montre Connectée">
                                     <h4>votre produit 8</h4>
                                     <p>1 500 DA</p>
@@ -1268,7 +1269,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_2">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="38mm">38mm (Petit poignet)</option>
                                             <option value="42mm">42mm (Moyen poignet)</option>
@@ -1276,11 +1277,11 @@
                                             <option value="Ajustable">Ajustable</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_8" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 9 -->
-                                <div class="slider-product" data-id="9" data-name="Enceinte Bluetooth" data-price="4000">
+                                <div class="slider-product" data-id="9" data-name="votre produit 9" data-price="4000">
                                     <img src="images/prod9.png" alt="Enceinte Bluetooth">
                                     <h4>votre produit 9</h4>
                                     <p>4 000 DA</p>
@@ -1290,21 +1291,21 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_3">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="Petite">Petite (Portable)</option>
                                             <option value="Moyenne">Moyenne (Maison)</option>
                                             <option value="Grande">Grande (Extérieur)</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_9" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                             </div>
 
                             <!-- Slide 4 -->
                             <div class="slide">
                                 <!-- Product 10 -->
-                                <div class="slider-product" data-id="1" data-name="JJIEDDIE JJORIGINAL SO 737 NOOS JEAN" data-price="2500">
+                                <div class="slider-product" data-id="10" data-name="votre produit 10" data-price="2500">
                                     <img src="images/prod10.png" alt="JJIEDDIE JEAN" class="product-image">
                                     <h4>votre produit 10</h4>
                                     <p>2 500 DA</p>
@@ -1314,7 +1315,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_1">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="S">S (Petit)</option>
                                             <option value="M">M (Moyen)</option>
@@ -1322,11 +1323,11 @@
                                             <option value="XL">XL (Très Large)</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_10" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 11 -->
-                                <div class="slider-product" data-id="2" data-name="Montre Connectée Premium" data-price="1500">
+                                <div class="slider-product" data-id="11" data-name="votre produit 11" data-price="1500">
                                     <img src="images/prod11.png" alt="Montre Connectée">
                                     <h4>votre produit 11</h4>
                                     <p>1 500 DA</p>
@@ -1336,7 +1337,7 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_2">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="38mm">38mm (Petit poignet)</option>
                                             <option value="42mm">42mm (Moyen poignet)</option>
@@ -1344,11 +1345,11 @@
                                             <option value="Ajustable">Ajustable</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_11" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                                 
                                 <!-- Product 12 -->
-                                <div class="slider-product" data-id="3" data-name="Enceinte Bluetooth" data-price="2500">
+                                <div class="slider-product" data-id="12" data-name="votre produit 12" data-price="2500">
                                     <img src="images/prod12.png" alt="Enceinte Bluetooth">
                                     <h4>votre produit 12</h4>
                                     <p>2 500 DA</p>
@@ -1358,14 +1359,14 @@
                                         <button class="quantity-btn plus" type="button">+</button>
                                     </div>
                                     <div class="size-selector">
-                                        <select name="size_3">
+                                        <select>
                                             <option value="">Choisir la taille</option>
                                             <option value="Petite">Petite (Portable)</option>
                                             <option value="Moyenne">Moyenne (Maison)</option>
                                             <option value="Grande">Grande (Extérieur)</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="product_12" value="0">
+                                    <input type="hidden" value="0">
                                 </div>
                             </div>
                         </div>
@@ -1634,7 +1635,6 @@
                 });
             });
 
-            // ... (le reste du code JavaScript reste inchangé)
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page');
             
@@ -1705,7 +1705,7 @@
             const nextButton = document.querySelector('.slider-arrow.next');
             const productSlider = document.getElementById('productSlider');
             let currentSlide = 0;
-            const slideCount = 4; // 2 slides with 3 products each
+            const slideCount = 4; // 4 slides with 3 products each
             let startX = 0;
             let isDragging = false;
             let startTime = 0;
@@ -1967,6 +1967,7 @@
                 const summaryItems = document.getElementById('summaryItems');
                 const deliveryFeeElement = document.getElementById('deliveryFee');
                 const totalPriceElement = document.getElementById('totalPrice');
+                const formTotal = document.getElementById('formTotal');
                 
                 // Get selected products
                 const selectedProducts = document.querySelectorAll('.slider-product');
@@ -2020,6 +2021,9 @@
                 const total = productsTotal + deliveryFee;
                 const formattedTotal = new Intl.NumberFormat('fr-DZ').format(total);
                 totalPriceElement.textContent = `${formattedTotal} DA`;
+                
+                // Update hidden form field for total
+                formTotal.value = total;
             }
             
             // Initialize order summary
