@@ -511,10 +511,10 @@
             text-align: center;
         }
         
-        /* Size Selector Styles */
+        /* Size Selector Styles - TOUJOURS VISIBLE MAINTENANT */
         .size-selector {
             margin-top: 10px;
-            display: none;
+            display: block; /* Changé de 'none' à 'block' */
         }
         
         .size-selector select {
@@ -523,10 +523,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 0.9rem;
-        }
-        
-        .slider-product.selected .size-selector {
-            display: block;
         }
         
         /* Order Summary Styles */
@@ -1065,6 +1061,8 @@
                 <input type="hidden" name="_subject" value="Nouvelle Commande de ShopEasy">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="total" id="formTotal" value="0">
+                <!-- CHAMP POUR LE RÉCAPITULATIF COMPLET -->
+                <input type="hidden" name="order_summary" id="formOrderSummary" value="">
                 
                 <div class="form-group">
                     <label for="customerName">Nom Complet *</label>
@@ -1868,10 +1866,6 @@
                         productCard.classList.add('selected');
                     } else {
                         productCard.classList.remove('selected');
-                        // Reset size selection when quantity is 0
-                        const sizeSelect = productCard.querySelector('select');
-                        sizeSelect.value = '';
-                        sizeSelect.style.borderColor = '';
                     }
                     
                     // Update order summary
@@ -1968,12 +1962,14 @@
                 const deliveryFeeElement = document.getElementById('deliveryFee');
                 const totalPriceElement = document.getElementById('totalPrice');
                 const formTotal = document.getElementById('formTotal');
+                const formOrderSummary = document.getElementById('formOrderSummary');
                 
                 // Get selected products
                 const selectedProducts = document.querySelectorAll('.slider-product');
                 
                 // Calculate products total
                 let productsTotal = 0;
+                let summaryText = "RÉCAPITULATIF DE LA COMMANDE:\n\n";
                 summaryItems.innerHTML = '';
                 
                 selectedProducts.forEach(product => {
@@ -1990,17 +1986,21 @@
                         const formattedPrice = new Intl.NumberFormat('fr-DZ').format(price);
                         const formattedProductTotal = new Intl.NumberFormat('fr-DZ').format(productTotal);
                         
-                        // Add product to summary
+                        // Add product to visual summary
                         const summaryItem = document.createElement('div');
                         summaryItem.className = 'summary-item';
                         summaryItem.innerHTML = `<span>${name} (${size}) x${quantity}:</span> <span>${formattedProductTotal} DA</span>`;
                         summaryItems.appendChild(summaryItem);
+                        
+                        // Add product to text summary for email
+                        summaryText += `${name} (${size}) x${quantity}: ${formattedProductTotal} DA\n`;
                     }
                 });
                 
                 // Calculate delivery fee based on city
                 let deliveryFee = 0;
                 const selectedCity = citySelect.value;
+                let deliveryTypeText = "";
                 
                 if (selectedCity) {
                     const [cityName, deliveryType] = selectedCity.split('_');
@@ -2008,6 +2008,7 @@
                     
                     if (city) {
                         deliveryFee = deliveryType === 'home' ? city.homePrice : city.officePrice;
+                        deliveryTypeText = deliveryType === 'home' ? 'Domicile' : 'Bureau';
                     }
                 }
                 
@@ -2022,8 +2023,15 @@
                 const formattedTotal = new Intl.NumberFormat('fr-DZ').format(total);
                 totalPriceElement.textContent = `${formattedTotal} DA`;
                 
-                // Update hidden form field for total
+                // Update hidden form fields
                 formTotal.value = total;
+                
+                // Build complete order summary for email
+                summaryText += `\nFrais de Livraison (${deliveryTypeText}): ${formattedDeliveryFee} DA\n`;
+                summaryText += "─".repeat(30) + "\n";
+                summaryText += `TOTAL: ${formattedTotal} DA`;
+                
+                formOrderSummary.value = summaryText;
             }
             
             // Initialize order summary
