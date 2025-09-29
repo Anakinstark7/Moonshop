@@ -1876,6 +1876,29 @@
                     
                     // Update order summary
                     updateOrderSummary();
+                    
+                    // CORRECTION : Mettre à jour le style de la sélection de taille
+                    const sizeSelect = productCard.querySelector('select');
+                    if (quantity > 0 && sizeSelect.value) {
+                        sizeSelect.style.borderColor = '';
+                    }
+                });
+            });
+            
+            // CORRECTION : Ajouter un écouteur d'événement pour les changements de taille
+            const sizeSelects = document.querySelectorAll('.size-selector select');
+            sizeSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    // Mettre à jour le récapitulatif quand la taille change
+                    updateOrderSummary();
+                    
+                    // Mettre à jour le style si nécessaire
+                    const productCard = this.closest('.slider-product');
+                    const quantity = parseInt(productCard.querySelector('.quantity-display').textContent);
+                    
+                    if (quantity > 0 && this.value) {
+                        this.style.borderColor = '';
+                    }
                 });
             });
             
