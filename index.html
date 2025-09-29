@@ -26,10 +26,12 @@
             margin: 0 auto;
             padding: 0px;
         }
+        
+        /* CORRECTION HERO MOBILE */
         .container .hero {
-            margin-left: -80px;
-            margin-right: -80px;
-            width: calc(100% + 150px);
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
             border-radius: 0;
         }
         
@@ -98,26 +100,29 @@
             display: block;
         }
         
-        /* Hero Section */
+        /* Hero Section - CORRECTION POUR MOBILE */
         .hero {
             position: relative;
-            height: 93vh;
+            height: 60vh; /* Réduit la hauteur pour mobile */
             background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), 
                         url('hero.png');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             color: white;
-            margin-bottom: 120px;
-            border-radius: 10px;
+            margin-bottom: 60px; /* Réduit la marge pour mobile */
+            border-radius: 0;
+            padding: 20px;
         }
         
         .hero-content {
             max-width: 800px;
-            padding: 0 20px;
-            padding-top: 380px;
-            padding-left: 99px;
+            padding: 20px;
+            padding-top: 0; /* Supprimé le padding-top fixe */
         }
         
         .btn {
@@ -379,7 +384,7 @@
             resize: vertical;
         }
         
-        /* Product Slider */
+        /* Product Slider - CORRECTION POUR MOBILE (1 produit par slide) */
         .product-slider {
             position: relative;
             margin: 30px 0;
@@ -393,21 +398,24 @@
         }
         
         .slide {
-            min-width: 100%;
+            min-width: 100%; /* Chaque slide prend 100% de largeur */
             display: flex;
-            justify-content: space-around;
+            justify-content: center; /* Centre le produit */
             flex-wrap: wrap;
             gap: 20px;
+            padding: 0 10px;
         }
         
         .slider-product {
-            flex: 0 0 calc(33.333% - 20px);
+            flex: 0 0 100%; /* Chaque produit prend 100% de la slide */
+            max-width: 400px; /* Largeur maximale pour garder une bonne proportion */
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 15px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            margin: 0 auto; /* Centre le produit */
         }
         
         .slider-product:hover {
@@ -421,7 +429,7 @@
         
         .slider-product img {
             width: 100%;
-            height: 150px;
+            height: 200px;
             object-fit: cover;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -582,7 +590,7 @@
             display: none;
         }
         
-        /* Responsive Design */
+        /* Responsive Design - AMÉLIORATIONS MOBILE */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -604,24 +612,42 @@
                 margin: 0 10px;
             }
             
+            /* CORRECTION HERO POUR MOBILE */
+            .hero {
+                height: 50vh; /* Encore plus réduit sur mobile */
+                margin-bottom: 40px;
+                padding: 15px;
+            }
+            
+            .hero-content {
+                padding-top: 0;
+                padding-left: 0;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .products-grid, .featured-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
             
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            /* CORRECTION SLIDER POUR MOBILE */
             .slide {
                 flex-direction: column;
             }
             
             .slider-product {
                 flex: 0 0 100%;
+                max-width: 100%;
             }
             
             header {
@@ -644,6 +670,10 @@
                 right: 25px;
                 font-size: 35px;
             }
+            
+            .order-form {
+                padding: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -656,6 +686,31 @@
                 top: 5px;
                 right: 15px;
                 font-size: 30px;
+            }
+            
+            .hero {
+                height: 40vh; /* Très réduit sur très petits écrans */
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Media Query pour desktop - On garde 3 produits par slide sur grand écran */
+        @media (min-width: 1024px) {
+            .slide {
+                min-width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .slider-product {
+                flex: 0 0 calc(33.333% - 20px); /* 3 produits par slide sur desktop */
+                max-width: none;
             }
         }
     </style>
@@ -1092,9 +1147,9 @@
                     <div class="product-slider" id="productSlider">
                         <button type="button" class="slider-arrow prev">&#10094;</button>
                         <div class="slider-container" id="sliderContainer">
-                            <!-- Slide 1 -->
+                            <!-- CORRECTION : Maintenant chaque produit a sa propre slide -->
+                            <!-- Product 1 -->
                             <div class="slide">
-                                <!-- Product 1 -->
                                 <div class="slider-product" data-id="1" data-name="votre produit 1" data-price="3500">
                                     <img src="images/prod1.png" alt="JJIEDDIE JEAN" class="product-image">
                                     <h4>votre produit 1</h4>
@@ -1115,8 +1170,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 2 -->
+                            </div>
+                            
+                            <!-- Product 2 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="2" data-name="votre produit 2" data-price="12000">
                                     <img src="images/prod2.png" alt="Montre Connectée">
                                     <h4>votre produit 2</h4>
@@ -1137,8 +1194,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 3 -->
+                            </div>
+                            
+                            <!-- Product 3 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="3" data-name="votre produit 3" data-price="2000">
                                     <img src="images/prod3.png" alt="Enceinte Bluetooth">
                                     <h4>votre produit 3</h4>
@@ -1160,9 +1219,8 @@
                                 </div>
                             </div>
                             
-                            <!-- Slide 2 -->
+                            <!-- Product 4 -->
                             <div class="slide">
-                                <!-- Product 4 -->
                                 <div class="slider-product" data-id="4" data-name="votre produit 4" data-price="9500">
                                     <img src="images/prod4.png" alt="Écouteurs Sans Fil">
                                     <h4>votre produit 4</h4>
@@ -1183,8 +1241,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 5 -->
+                            </div>
+                            
+                            <!-- Product 5 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="5" data-name="votre produit 5" data-price="1500">
                                     <img src="images/prod5.png" alt="Sac à Dos pour Ordinateur">
                                     <h4>votre produit 5</h4>
@@ -1205,8 +1265,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 6 -->
+                            </div>
+                            
+                            <!-- Product 6 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="6" data-name="votre produit 6" data-price="8000">
                                     <img src="images/prod6.png" alt="Chaussures de Course">
                                     <h4>votre produit 6</h4>
@@ -1232,9 +1294,9 @@
                                     <input type="hidden" value="0">
                                 </div>
                             </div>
-                            <!-- Slide 3 -->
+                            
+                            <!-- Product 7 -->
                             <div class="slide">
-                                <!-- Product 7 -->
                                 <div class="slider-product" data-id="7" data-name="votre produit 7" data-price="600">
                                     <img src="images/prod7.png" alt="JJIEDDIE JEAN" class="product-image">
                                     <h4>votre produit 7</h4>
@@ -1255,8 +1317,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 8 -->
+                            </div>
+                            
+                            <!-- Product 8 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="8" data-name="votre produit 8" data-price="1500">
                                     <img src="images/prod8.png" alt="Montre Connectée">
                                     <h4>votre produit 8</h4>
@@ -1277,8 +1341,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 9 -->
+                            </div>
+                            
+                            <!-- Product 9 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="9" data-name="votre produit 9" data-price="4000">
                                     <img src="images/prod9.png" alt="Enceinte Bluetooth">
                                     <h4>votre produit 9</h4>
@@ -1300,9 +1366,8 @@
                                 </div>
                             </div>
 
-                            <!-- Slide 4 -->
+                            <!-- Product 10 -->
                             <div class="slide">
-                                <!-- Product 10 -->
                                 <div class="slider-product" data-id="10" data-name="votre produit 10" data-price="2500">
                                     <img src="images/prod10.png" alt="JJIEDDIE JEAN" class="product-image">
                                     <h4>votre produit 10</h4>
@@ -1323,8 +1388,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 11 -->
+                            </div>
+                            
+                            <!-- Product 11 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="11" data-name="votre produit 11" data-price="1500">
                                     <img src="images/prod11.png" alt="Montre Connectée">
                                     <h4>votre produit 11</h4>
@@ -1345,8 +1412,10 @@
                                     </div>
                                     <input type="hidden" value="0">
                                 </div>
-                                
-                                <!-- Product 12 -->
+                            </div>
+                            
+                            <!-- Product 12 -->
+                            <div class="slide">
                                 <div class="slider-product" data-id="12" data-name="votre produit 12" data-price="2500">
                                     <img src="images/prod12.png" alt="Enceinte Bluetooth">
                                     <h4>votre produit 12</h4>
@@ -1371,10 +1440,19 @@
                         <button type="button" class="slider-arrow next">&#10095;</button>
                         
                         <div class="slider-nav">
+                            <!-- CORRECTION : Maintenant 12 dots pour 12 produits -->
                             <div class="slider-dot active" data-slide="0"></div>
                             <div class="slider-dot" data-slide="1"></div>
                             <div class="slider-dot" data-slide="2"></div>
                             <div class="slider-dot" data-slide="3"></div>
+                            <div class="slider-dot" data-slide="4"></div>
+                            <div class="slider-dot" data-slide="5"></div>
+                            <div class="slider-dot" data-slide="6"></div>
+                            <div class="slider-dot" data-slide="7"></div>
+                            <div class="slider-dot" data-slide="8"></div>
+                            <div class="slider-dot" data-slide="9"></div>
+                            <div class="slider-dot" data-slide="10"></div>
+                            <div class="slider-dot" data-slide="11"></div>
                         </div>
                     </div>
                 </div>
@@ -1703,7 +1781,7 @@
             const nextButton = document.querySelector('.slider-arrow.next');
             const productSlider = document.getElementById('productSlider');
             let currentSlide = 0;
-            const slideCount = 4; // 4 slides with 3 products each
+            const slideCount = 12; // CORRECTION : Maintenant 12 slides (1 par produit)
             let startX = 0;
             let isDragging = false;
             let startTime = 0;
