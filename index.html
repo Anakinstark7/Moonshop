@@ -720,6 +720,20 @@
                 max-width: none;
             }
         }
+        /* Pour les téléphones */
+@media (max-width: 768px) {
+    .products-grid, .featured-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne */
+    }
+}
+
+/* Pour les grands écrans (PC) */
+@media (min-width: 1024px) {
+    .products-grid, .featured-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 produits par ligne */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -2169,6 +2183,7 @@
     </script>
 </body>
 </html>
+
 
 
 
