@@ -102,36 +102,32 @@
         
         /* Hero Section - CORRECTION POUR MOBILE */
         .hero {
-            position: relative;
-            height: 73vh; /* Réduit la hauteur pour mobile */
-            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), 
-                        url('hero.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            color: white;
-            margin-bottom: 60px; /* Réduit la marge pour mobile */
-            border-radius: 0;
-            padding: 20px;
+           position: relative;
+           width: 100vw;
+           height: 100vh;
+           background: url('hero.png') center center / cover no-repeat;
+           margin: 0;
+           padding: 20px;
+           border-radius: 0;
+           color: white;
         }
-        
         .hero-content {
             max-width: 800px;
-            padding-left: 42px;
-            padding-top: 0; /* Supprimé le padding-top fixe */
+            padding-left: 164px;
+            padding-top: 384px; /* Supprimé le padding-top fixe */
         }
-        .hero h2{
-            font-size: 42px;
+        /*.hero h2{
+            font-size: 47px;
             font-family: 'Bogart';
             line-height: 69px;
         }
         .hero p{
-            padding-left: 45px;
-            padding-bottom: 17px;
+            padding-left: 33px;
+            padding-bottom: 16px;
             font-size: 18px;
-            font-family: 'Dm sans';
-        }
+            font-family: 'Dm sans'; 
+        }*/
+        
         .btn {
             display: inline-block;
             background-color: #478AC9;
@@ -347,15 +343,58 @@
         }
         
         /* Featured Products */
-        .featured-products {
-            margin-bottom: 60px;
-        }
-        
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
+.featured-products {
+    margin-top: 0px;
+  background-color: #478AC9; /* blue background */
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 49px ;
+}
+
+.featured-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.featured-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.featured-slide {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  min-width: 100%;
+  padding: 0 20px;
+}
+
+/* For phones: 2 per row */
+@media (max-width: 768px) {
+  .featured-slide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Slider arrows */
+.featured-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.featured-arrow.left { left: 10px; }
+.featured-arrow.right { right: 10px; }
         
         /* Order Form Styles */
         .order-form {
@@ -599,6 +638,13 @@
         
         /* Responsive Design - AMÉLIORATIONS MOBILE */
         @media (max-width: 768px) {
+        .products-grid {
+  padding: 0 15px; /* space from left and right edges */
+}
+
+.product-card {
+  margin: 0 auto; /* center cards if smaller */
+}
             .header-content {
                 flex-direction: column;
                 text-align: center;
@@ -720,20 +766,6 @@
                 max-width: none;
             }
         }
-        /* Pour les téléphones */
-@media (max-width: 768px) {
-    .products-grid, .featured-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne */
-    }
-}
-
-/* Pour les grands écrans (PC) */
-@media (min-width: 1024px) {
-    .products-grid, .featured-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 produits par ligne */
-    }
-}
-
     </style>
 </head>
 <body>
@@ -774,16 +806,18 @@
             <!-- Hero Section -->
             <div class="hero">
                 <div class="hero-content">
-                    <h2>welcome to <br> MOON STORE</h2>
-                    <p>Découvrez des produits incroyables à <br>des prix imbattables. Qualité et<br> satisfaction garanties..</p>
+                    <!--<h2>welcome to <br> MOON STORE</h2>
+                    <p>Découvrez des produits incroyables à <br>des prix imbattables. Qualité et<br> satisfaction garanties..</p> -->
                     <a href="#order" class="btn nav-link">commandez MAINTENANT</a>
                 </div>
             </div>
             
             <!-- Featured Products -->
             <div class="featured-products">
-                <h2 class="section-title">Produits en Vedette</h2>
-                <div class="featured-grid">
+            <h2 class="featured-title">Produits en Vedette</h2>
+            <button class="featured-arrow left" onclick="moveFeatured(-1)">&#10094;</button>
+            <div class="featured-slider" id="featuredSlider">
+            <div class="featured-slide">
                     <!-- Featured Product 1 -->
                     <div class="product-card">
                         <div class="product-image-container" data-product="1">
@@ -872,6 +906,11 @@
                         </div>
                     </div>
                 </div>
+            <div class="featured-slide">
+            <!-- next 4 product cards here if you have more -->
+            </div>
+            </div>
+            <button class="featured-arrow right" onclick="moveFeatured(1)">&#10095;</button>
             </div>
             
             <!-- All Products -->
@@ -2180,9 +2219,17 @@
             // Initialize order summary
             updateOrderSummary();
         });
+            let currentFeaturedSlide = 0;
+            function moveFeatured(direction) {
+         const slider = document.getElementById('featuredSlider');
+         const slides = slider.children.length;
+         currentFeaturedSlide = (currentFeaturedSlide + direction + slides) % slides;
+         slider.style.transform = `translateX(-${currentFeaturedSlide * 100}%)`;
+}
     </script>
 </body>
 </html>
+
 
 
 
