@@ -733,6 +733,19 @@
         grid-template-columns: repeat(4, 1fr); /* 4 produits par ligne */
     }
 }
+        @media (max-width: 768px) {
+    .products-grid, .featured-grid {
+        grid-template-columns: repeat(2, 1fr); /* stay 2 per row */
+        gap: 15px;
+        padding: 0 15px; /* add space on left & right */
+    }
+
+    .product-card {
+        margin: 0 auto;
+        max-width: 170px; /* slightly smaller to fit */
+    }
+}
+
 
     </style>
 </head>
@@ -2183,6 +2196,7 @@
     </script>
 </body>
 </html>
+
 
 
 
