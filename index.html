@@ -102,35 +102,13 @@
         
         /* Hero Section - CORRECTION POUR MOBILE */
         .hero {
-            position: relative;
-            height: 73vh; /* Réduit la hauteur pour mobile */
-            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), 
-                        url('hero.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            color: white;
-            margin-bottom: 60px; /* Réduit la marge pour mobile */
-            border-radius: 0;
-            padding: 20px;
+            padding-top: 0px;
+            margin-bottom: 90px;
         }
         
-        .hero-content {
-            max-width: 800px;
-            padding-left: 42px;
-            padding-top: 0; /* Supprimé le padding-top fixe */
-        }
-        .hero h2{
-            font-size: 42px;
-            font-family: 'Bogart';
-            line-height: 69px;
-        }
-        .hero p{
-            padding-left: 45px;
-            padding-bottom: 17px;
-            font-size: 18px;
-            font-family: 'Dm sans';
+        .heros{
+            padding-left: 69%;
+            padding-top: 33px;
         }
         .btn {
             display: inline-block;
@@ -785,108 +763,15 @@
     <section id="home" class="page active">
         <div class="container">
             <!-- Hero Section -->
+             <img src="hero.png" width="100%" >
             <div class="hero">
-                <div class="hero-content">
-                    <h2>welcome to <br> MOON STORE</h2>
-                    <p>Découvrez des produits incroyables à <br>des prix imbattables. Qualité et<br> satisfaction garanties..</p>
-                    <a href="#order" class="btn nav-link">commandez MAINTENANT</a>
+                <img src="images/heros.svg" width="100%" >
+                <div class="heros">
+                   <a href="#order" class="btn nav-link">commandez MAINTENANT</a>
                 </div>
             </div>
             
-            <!-- Featured Products -->
-            <div class="featured-products">
-                <h2 class="section-title">Produits en Vedette</h2>
-                <div class="featured-grid">
-                    <!-- Featured Product 1 -->
-                    <div class="product-card">
-                        <div class="product-image-container" data-product="1">
-                            <div class="product-image-slider">
-                                <img src="images/prod8.png" alt="JJIEDDIE JEAN 1" class="product-image">
-                                <img src="images/prod8.png" alt="JJIEDDIE JEAN 2" class="product-image">
-                                <img src="images/prod8.png" alt="JJIEDDIE JEAN 3" class="product-image">
-                            </div>
-                            <div class="product-slider-nav">
-                                <div class="product-slider-dot active" data-index="0"></div>
-                                <div class="product-slider-dot" data-index="1"></div>
-                                <div class="product-slider-dot" data-index="2"></div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">titre de ton produit 1</h3>
-                            <div class="product-price">1 500 DA</div>
-                            <p class="product-description">votre description de produit 1.</p>
-                            <a href="#order" class="btn nav-link">Commander</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Featured Product 2 -->
-                    <div class="product-card">
-                        <div class="product-image-container" data-product="2">
-                            <div class="product-image-slider">
-                                <img src="images/prod2.png" alt="Montre Connectée 1" class="product-image">
-                                <img src="images/prod2.png" alt="Montre Connectée 2" class="product-image">
-                                <img src="images/prod2.png" alt="Montre Connectée 3" class="product-image">
-                            </div>
-                            <div class="product-slider-nav">
-                                <div class="product-slider-dot active" data-index="0"></div>
-                                <div class="product-slider-dot" data-index="1"></div>
-                                <div class="product-slider-dot" data-index="2"></div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">titre de ton produit 2</h3>
-                            <div class="product-price">12 000 DA</div>
-                            <p class="product-description">votre description de produit 2.</p>
-                            <a href="#order" class="btn nav-link">Commander</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Featured Product 3 -->
-                    <div class="product-card">
-                        <div class="product-image-container" data-product="3">
-                            <div class="product-image-slider">
-                                <img src="images/prod3.png" alt="Enceinte Bluetooth 1" class="product-image">
-                                <img src="images/prod3.png" alt="Enceinte Bluetooth 2" class="product-image">
-                                <img src="images/prod3.png" alt="Enceinte Bluetooth 3" class="product-image">
-                            </div>
-                            <div class="product-slider-nav">
-                                <div class="product-slider-dot active" data-index="0"></div>
-                                <div class="product-slider-dot" data-index="1"></div>
-                                <div class="product-slider-dot" data-index="2"></div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">titre de ton produit 3</h3>
-                            <div class="product-price">2 000 DA</div>
-                            <p class="product-description">votre description de produit 3.</p>
-                            <a href="#order" class="btn nav-link">Commander</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Featured Product 4 -->
-                    <div class="product-card">
-                        <div class="product-image-container" data-product="4">
-                            <div class="product-image-slider">
-                                <img src="images/prod9.png" alt="Écouteurs Sans Fil 1" class="product-image">
-                                <img src="images/prod9.png" alt="Écouteurs Sans Fil 2" class="product-image">
-                                <img src="images/prod9.png" alt="Écouteurs Sans Fil 3" class="product-image">
-                            </div>
-                            <div class="product-slider-nav">
-                                <div class="product-slider-dot active" data-index="0"></div>
-                                <div class="product-slider-dot" data-index="1"></div>
-                                <div class="product-slider-dot" data-index="2"></div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">titre de ton produit 4</h3>
-                            <div class="product-price">4 000 DA</div>
-                            <p class="product-description">votre description de produit 4.</p>
-                            <a href="#order" class="btn nav-link">Commander</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+     
             <!-- All Products -->
             <h2 class="section-title">Tous les Produits</h2>
             <div class="products-grid">
@@ -917,7 +802,7 @@
                     <div class="product-image-container" data-product="2">
                         <div class="product-image-slider">
                             <img src="images/prod2.png" alt="Montre Connectée 1" class="product-image">
-                            <img src="images/prod2.png" alt="Montre Connectée 2" class="product-image">
+                            <img src="images/prod2.png" alt="Montre " class="product-image">
                         </div>
                         <div class="product-slider-nav">
                             <div class="product-slider-dot active" data-index="0"></div>
@@ -2196,6 +2081,7 @@
     </script>
 </body>
 </html>
+
 
 
 
